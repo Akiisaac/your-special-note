@@ -47,16 +47,23 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        sidebar: {
-          DEFAULT: "hsl(var(--sidebar-background))",
-          foreground: "hsl(var(--sidebar-foreground))",
-          primary: "hsl(var(--sidebar-primary))",
-          "primary-foreground": "hsl(var(--sidebar-primary-foreground))",
-          accent: "hsl(var(--sidebar-accent))",
-          "accent-foreground": "hsl(var(--sidebar-accent-foreground))",
-          border: "hsl(var(--sidebar-border))",
-          ring: "hsl(var(--sidebar-ring))",
-        },
+        envelope: "hsl(var(--envelope))",
+        "envelope-inner": "hsl(var(--envelope-inner))",
+        seal: "hsl(var(--seal))",
+        "seal-hover": "hsl(var(--seal-hover))",
+        paper: "hsl(var(--paper))",
+        "paper-lines": "hsl(var(--paper-lines))",
+        "sidebar-bg": "hsl(var(--sidebar-bg))",
+        "unread-dot": "hsl(var(--unread-dot))",
+      },
+      fontFamily: {
+        letter: ["Cormorant Garamond", "serif"],
+        ui: ["DM Sans", "sans-serif"],
+      },
+      boxShadow: {
+        envelope: "var(--shadow-envelope)",
+        paper: "var(--shadow-paper)",
+        sidebar: "var(--shadow-sidebar)",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -65,20 +72,12 @@ export default {
       },
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {

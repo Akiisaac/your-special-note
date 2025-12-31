@@ -1,12 +1,45 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import EmailSidebar from "@/components/EmailSidebar";
+import EmailPreview from "@/components/EmailPreview";
+import Envelope from "@/components/Envelope";
+import Letter from "@/components/Letter";
+
+type ViewState = "inbox" | "envelope" | "letter";
 
 const Index = () => {
+  const [viewState, setViewState] = useState<ViewState>("inbox");
+  const [isRead, setIsRead] = useState(false);
+
+  const handleEmailClick = () => {
+    if (!isRead) {
+      setViewState("envelope");
+    }
+  };
+
+  const handleEnvelopeOpen = () => {
+    setViewState("letter");
+    setIsRead(true);
+  };
+
+  const handleClose = () => {
+    setViewState("inbox");
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background flex">
+      {/* Sidebar */}
+      <EmailSidebar onEmailClick={handleEmailClick} hasUnread={!isRead} />
+
+      {/* Main content */}
+      <EmailPreview onEmailClick={handleEmailClick} isRead={isRead} />
+
+      {/* Envelope overlay */}
+      {viewState === "envelope" && (
+        <Envelope onClose={handleClose} onOpen={handleEnvelopeOpen} />
+      )}
+
+      {/* Letter overlay */}
+      {viewState === "letter" && <Letter onClose={handleClose} />}
     </div>
   );
 };
